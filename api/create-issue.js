@@ -1,5 +1,6 @@
 // Vercel Serverless Function
 const axios = require('axios');
+const repoLink = process.env.GH_LINK
 
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
@@ -14,7 +15,7 @@ module.exports = async (req, res) => {
 
   try {
     const response = await axios.post(
-      'https://api.github.com/repos/YOUR_USERNAME/YOUR_REPO/issues',
+      repoLink,
       {
         title: 'Transcript Request',
         body: `${videoUrl}\n\n${description}`
